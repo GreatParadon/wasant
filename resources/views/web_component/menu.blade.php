@@ -74,7 +74,7 @@
         </li>
         <li><a href="/">Home</a></li>
         <li><a href="/service">Our Service</a></li>
-        <li><a href="/great">Gears</a></li>
+        <li><a href="/gear">Gears</a></li>
         <li><a href="/map">Maps</a></li>
         <li><a href="/contact">Contact Us</a></li>
     </ul>

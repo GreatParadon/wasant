@@ -1,35 +1,5 @@
 <?php
 
-Route::group(['namespace' => 'Web'], function () {
-
-    Route::post('signup', 'UserWebController@signUp');
-    Route::post('signin', 'UserWebController@signIn');
-
-    Route::get('', 'WebController@index');
-    Route::get('category/{category_id}', 'WebController@getProductListByCategory');
-    Route::get('product/{product_id}', 'WebController@product');
-    Route::get('promotion/{promotion_id}', 'WebController@promotion');
-    Route::get('contact', 'WebController@contact');
-
-    Route::group(['middleware' => 'user'], function () {
-
-        Route::get('signout', 'UserWebController@signOut');
-        Route::get('user', 'UserWebController@getUserInformation');
-        Route::post('user', 'UserWebController@updateUserInformation');
-
-        Route::get('cart', 'ProductCartController@cart');
-        Route::get('checkout', 'ProductCartController@checkout');
-        Route::get('checkout/{id}', 'ProductCartController@checkoutDetail');
-        Route::post('checkout/{id}', 'ProductCartController@updateCheckout');
-        Route::resource('productcart', 'ProductCartController');
-        Route::post('changepieces', 'ProductCartController@changePieces');
-        Route::post('checkoutcart', 'ProductCartController@checkoutProductCart');
-
-    });
-
-
-});
-
 Route::group(['middleware' => 'api', 'prefix' => 'api', 'namespace' => 'Api'], function () {
 
     Route::resource('category', 'CategoryController');
@@ -66,3 +36,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 });
 
 Route::post('wysiwyg_upload', 'BaseController@wysiwygUpload');
+
+
+Route::group(['namespace' => 'Web'], function () {
+    Route::get('', function () {
+        $promotion = \App\Models\Promotion::where('active', 1)->get();
+
+        return view('web.index', compact('promotion'));
+    });
+
+    Route::get('{web}', function ($web) {
+        return view('web.' . $web);
+    });
+});

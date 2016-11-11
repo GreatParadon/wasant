@@ -28,9 +28,11 @@
 
 @include('web_component.header')
 
-<div class="container" id="container">
-    @include('web_component.menu')
-    @yield('content')
+<div class="wrapper">
+    <div class="container" id="container">
+        @include('web_component.menu')
+        @yield('content')
+    </div>
 </div>
 
 @include('web_component.footer')
