@@ -45,6 +45,19 @@ Route::group(['namespace' => 'Web'], function () {
         return view('web.index', compact('promotion'));
     });
 
+    Route::get('service', function () {
+        $service = \App\Models\Category::select('id', 'title')->where('active', 1)->get();
+        foreach ($service as $r) {
+//            $r->service_image = '2';
+//            $service_image = \App\Models\SubCategory::select('image')->where('category_id', $r->id)->where('active', 1)->get()->pluck('image');
+            $r->service_image = \App\Models\SubCategory::select('image')->where('category_id', $r->id)->where('active', 1)->get();
+        }
+
+//        dd($service);
+
+        return view('web.service', compact('service'));
+    });
+
     Route::get('{web}', function ($web) {
         return view('web.' . $web);
     });

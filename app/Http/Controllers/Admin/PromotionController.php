@@ -22,18 +22,6 @@ class PromotionController extends BaseController
         return new Promotion();
     }
 
-//    protected function listQuery($list_data)
-//    {
-//        return $this->model()->select(
-//            'id',
-//            'title as title',
-//            'title as category_name',
-//            'image as image',
-//            'active as active')
-//            ->orderBy('sub_categories.title', 'ASC')
-//            ->paginate(30);
-//    }
-
     protected function formData()
     {
         $form_data = collect([['field' => 'id', 'type' => 'number', 'label' => 'ID', 'required' => false],

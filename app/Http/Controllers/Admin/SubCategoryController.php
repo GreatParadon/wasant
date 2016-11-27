@@ -19,8 +19,8 @@ class SubCategoryController extends BaseController
     protected $create = true;
     protected $edit = true;
     protected $delete = true;
-    protected $gallery = true;
-    protected $sort = false;
+    protected $gallery = false;
+    protected $sort = true;
 
     protected function model()
     {
@@ -37,61 +37,15 @@ class SubCategoryController extends BaseController
 
     protected function formData()
     {
-        $categories = Category::select('id', 'title')->get()->pluck('title','id');
+        $categories = Category::select('id', 'title')->get()->pluck('title', 'id');
         $form_data = collect([['field' => 'id', 'type' => 'number', 'label' => 'ID', 'required' => false],
             ['field' => 'title', 'type' => 'text', 'label' => 'Title', 'required' => true],
-            ['field' => 'desc', 'type' => 'text', 'label' => 'Description', 'required' => true],
-            ['field' => 'cost', 'type' => 'number', 'label' => 'Cost', 'required' => true],
             ['field' => 'image', 'type' => 'image', 'label' => 'Logo', 'required' => false],
             ['field' => 'category_id', 'type' => 'select', 'label' => 'Category', 'option' => $categories],
             ['field' => 'content', 'type' => 'wysiwyg', 'label' => 'Content', 'required' => true],
             ['field' => 'active', 'type' => 'checkbox', 'label' => 'Active', 'required' => true]]);
 
         return $form_data;
-    }
-
-    protected function galleryQuery($id)
-    {
-        $gallery = Banner::where('sub_category_id', $id)->get();
-        foreach ($gallery as $g) {
-            $g->image = filePath($this->page['content'], $g->image);
-        }
-
-        $count = $gallery->count();
-        return compact('gallery', 'count');
-    }
-
-    protected function galleryUpload(Request $request)
-    {
-//        Banner::where('sub_category_id', $request->input('id'))->delete();
-        $files = $request->file('gallery');
-//        dd($files);
-        $file_count = count($files);
-        $count = 0;
-        foreach ($files as $file) {
-            $image = fileUpload($file, $this->page['content']);
-            if ($image['success'] == true) {
-                $data['image'] = $image['filename'];
-                $data['sub_category_id'] = $request->input('id');
-                Banner::create($data);
-            } else {
-                return error('Upload Failed');
-            }
-            $count++;
-        }
-        if ($count == $file_count) {
-            return success('Uploaded');
-        }
-    }
-
-    protected function galleryDestroy($id)
-    {
-        $banner = Banner::where('id', $id)->delete();
-        if ($banner) {
-            return success('Deleted');
-        } else {
-            return error('Delete Failed');
-        }
     }
 
 }

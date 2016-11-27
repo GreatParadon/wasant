@@ -1,9 +1,7 @@
 <?php
 
 return [
-    'category' => [['category', 'Category']],
-    'subcategory' => [['subcategory', 'Product']],
+    'category' => [['category', 'Service Category']],
+    'subcategory' => [['subcategory', 'Service']],
     'promotion' => [['promotion', 'Promotion']],
-    'checkout' => [['checkout', 'Checkout']],
-    'webuser' => [['webuser', 'Web User']]
 ];
