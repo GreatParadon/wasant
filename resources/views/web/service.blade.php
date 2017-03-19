@@ -13,13 +13,17 @@
         .service-title {
             color: #ffffff;
             background-color: #1c2840;
+            margin-top: 30px;
         }
 
-        #owl-service .item img {
-            display: block;
+        .item img {
             width: 100%;
-            margin-top: 50px;
-            margin-bottom: 50px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        .modal-image {
+            margin-top: -30px;
         }
     </style>
 
@@ -31,37 +35,46 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div id="owl-service" class="owl-carousel owl-theme">
-                        @if(isset($r->service_image))
-                            @foreach($r->service_image as $image)
-                                <div class="item">
-                                    <img src="{{ asset('content/subcategory').'/'.$image->image }}">
+                @if(isset($r->service_image))
+                    @foreach($r->service_image as $image)
+                        <div class="col-md-3 item">
+                            <img src="{{ asset('content/subcategory').'/'.$image->image }}" data-toggle="modal"
+                                 data-target="#image{{$image->id}}">
+                            <div class="modal fade" id="image{{$image->id}}" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">{{ $image->title }}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-6 modal-image">
+                                                    <img src="{{ asset('content/subcategory').'/'.$image->image }}">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {!! $image->content !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            @endforeach
-                        @else
-                            <div class="item">
-                                <img src="{{ asset('resources/banner').'/header1.png' }}">
                             </div>
-                        @endif
+                        </div>
+                    @endforeach
+                @else
+                    <div class="col-md-3 item">
+                        <img src="{{ asset('resources/banner').'/header1.png' }}">
                     </div>
-                </div>
+                @endif
             </div>
         @endforeach
     @endif
 
-    <script type="application/javascript">
-        $(document).ready(function () {
+    <script>
+        function detail(id) {
 
-            $("#owl-service").owlCarousel({
-                slideSpeed: 200,
-                paginationSpeed: 800,
-                pagination: true,
-                items : 3
-
-            });
-
-        });
+        }
     </script>
 
 @stop

@@ -50,7 +50,7 @@ Route::group(['namespace' => 'Web'], function () {
         foreach ($service as $r) {
 //            $r->service_image = '2';
 //            $service_image = \App\Models\SubCategory::select('image')->where('category_id', $r->id)->where('active', 1)->get()->pluck('image');
-            $r->service_image = \App\Models\SubCategory::select('image')->where('category_id', $r->id)->where('active', 1)->get();
+            $r->service_image = \App\Models\SubCategory::select('id', 'title', 'content', 'image')->where('category_id', $r->id)->where('active', 1)->get();
         }
 
 //        dd($service);

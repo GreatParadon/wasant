@@ -27,7 +27,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div id="owl-index" class="owl-carousel owl-theme">
+        <div id="owl-index">
             @foreach(['header1'] as $r)
                 <div class="item"><img src="{{ asset('resources/banner').'/'.$r.'.png' }}"></div>
             @endforeach
