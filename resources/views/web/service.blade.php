@@ -13,17 +13,27 @@
         .service-title {
             color: #ffffff;
             background-color: #1c2840;
-            margin-top: 30px;
+            margin-bottom: 30px;
         }
 
         .item img {
             width: 100%;
-            margin-top: 30px;
+            margin-bottom: 30px;
             cursor: pointer;
         }
 
-        .modal-image {
-            margin-top: -30px;
+        .fit-image {
+            background: #FFFFFF;
+            object-fit: cover;
+            /*min-width: 100%;*/
+            /*min-height: 100%;*/
+        }
+
+        .wrap-content {
+            word-wrap: break-word;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     </style>
 
@@ -39,7 +49,7 @@
                     @foreach($r->service_image as $image)
                         <div class="col-md-3 item">
                             <img src="{{ asset('content/subcategory').'/'.$image->image }}" data-toggle="modal"
-                                 data-target="#image{{$image->id}}">
+                                 data-target="#image{{$image->id}}" height="200" class="fit-image">
                             <div class="modal fade" id="image{{$image->id}}" tabindex="-1" role="dialog"
                                  aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
@@ -49,10 +59,10 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-md-6 modal-image">
+                                                <div class="col-md-6">
                                                     <img src="{{ asset('content/subcategory').'/'.$image->image }}">
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 wrap-content">
                                                     {!! $image->content !!}
                                                 </div>
                                             </div>
@@ -70,11 +80,5 @@
             </div>
         @endforeach
     @endif
-
-    <script>
-        function detail(id) {
-
-        }
-    </script>
 
 @stop

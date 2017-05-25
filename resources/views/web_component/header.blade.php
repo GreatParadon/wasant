@@ -18,7 +18,6 @@
     .wasant-logo div img {
         display: block;
         margin: 0 auto;
-        /*max-width: 100%;*/
         width: 30%;
         height: auto;
     }
@@ -28,9 +27,11 @@
 <div class="row">
     <div class="col-md-12">
         <div id="owl-index">
-            @foreach(['header1'] as $r)
-                <div class="item"><img src="{{ asset('resources/banner').'/'.$r.'.png' }}"></div>
-            @endforeach
+            @forelse(\App\Models\Banner::select('image')->where('active',1)->get() as $banner)
+                <div class="item"><img src="{{ asset('content/banner/'.$banner->image) }}" height=500></div>
+            @empty
+                <div class="item"><img src="{{ asset('resources/banner').'/header1.png' }}" height=500></div>
+            @endforelse
         </div>
         <div class="row wasant-logo">
             <div class="col-md-12">
@@ -49,8 +50,9 @@
         $("#owl-index").owlCarousel({
             slideSpeed: 200,
             paginationSpeed: 800,
+            autoPlay: true,
             singleItem: true,
-            pagination: true
+            pagination: false
 
         });
 

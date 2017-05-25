@@ -77,9 +77,6 @@
             <h4>" ทีมงานคุณภาพที่มี ประสบการณ์ ยาวนานกว่า 20 ปี "</h4>
             <img src="{{ asset('resources/header').'/logo.png' }}">
             <hr width="70%">
-            <p>Copyright xxxxxxxxxxxxxxxxxxxxx<br>
-                xxxxxxxxxxxxxxxxxx<br>
-                xxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
         </div>
         <div class="col-md-4 footer-side">
             <h3>

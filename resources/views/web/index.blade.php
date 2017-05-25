@@ -37,13 +37,12 @@
 
         .history .one {
             display: block;
-            margin: 0 auto;
             width: 45%;
-            margin-bottom: 20px;
+            margin: 0 auto 20px;
         }
 
         .promotion {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.8);
             position: absolute;
             top: 15%;
             left: 15%;
@@ -53,45 +52,59 @@
             padding-left: 100px;
         }
 
+        .fit-image {
+            object-fit: cover;
+            /*max-height: 100%;*/
+            /*width: auto;*/
+            /*min-width: 100%;*/
+            /*min-height: 100%;*/
+        }
+
     </style>
 
     <div class="row content">
         <div class="col-md-12">
             <div id="owl-promotion" class="owl-carousel owl-theme">
-                @if(isset($promotion))
-                    @foreach($promotion as $r)
-                        <div class="item">
-                            <img src="{{ asset('content/promotion').'/'.$r->image }}">
-                            <div class="row promotion  hidden-sm hidden-xs" align="center">
-                                <div class="col-md-12">
-                                    <h1>PROMOTION</h1>
-                                </div>
-                                <div class="col-md-12">
-                                    <h3>{{ $r->title or 'Promotion Description' }}</h3>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
+                @forelse($promotion as $r)
                     <div class="item">
-                        <img src="{{ asset('resources/banner').'/header1.png' }}">
-                        <div class="row promotion" align="center">
+
+                        <img src="{{ asset('content/promotion').'/'.$r->image }}" height="380" class="fit-image">
+                        <div class="row promotion hidden-sm hidden-xs" align="center">
                             <div class="col-md-12">
                                 <h1>PROMOTION</h1>
                             </div>
-                            <div class="col-md-12 hidden-sm hidden-xs">
-                                <h3>Promotion Description</h3>
+                            <div class="col-md-12">
+                                <h3>{{ $r->title or 'Promotion' }}</h3>
                             </div>
                         </div>
                     </div>
-                @endif
+                @empty
+                    <div class="item">
+
+                        <img src="{{ asset('resources/banner/header1.png') }}" height="380" class="fit-image">
+                        <div class="row promotion hidden-sm hidden-xs" align="center">
+                            <div class="col-md-12">
+                                <h1>PROMOTION</h1>
+                            </div>
+                            <div class="col-md-12">
+                                <h3>No Promotion now</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                @endforelse
+
             </div>
         </div>
     </div>
 
     <div class="row content">
         <div class="col-md-12">
-            <img src="{{ asset('resources/index/history.png') }}">
+            @if($info)
+                <img src="{{ asset('content/info/'.$info->image) }}">
+            @else
+                <img src="{{ asset('resources/index/history.png') }}">
+            @endif
             <div class="history">
 
                 <div class="row one">
@@ -102,9 +115,7 @@
                 </div>
                 <div class="row hidden-sm hidden-xs">
                     <div class="col-md-12" align="center">
-                        <h4>สตูดิโอถ่ายภาพชั้นนำของประเทศผู้เชี่ยวชาญด้านการถ่ายภาพ<br>
-                            ครบวงจร ด้วยอุปกรณ์ครบครันทันสมัยพร้อมทีมงานคุณภาพที่มี<br>
-                            ประสบการณ์ ยาวนานกว่า 20 ปี</h4>
+                        <h4>{{ $info->title or '' }}</h4>
                     </div>
                 </div>
             </div>
@@ -118,8 +129,9 @@
             $("#owl-promotion").owlCarousel({
                 slideSpeed: 200,
                 paginationSpeed: 800,
+                autoPlay: true,
                 singleItem: true,
-                pagination: true
+                pagination: false
 
             });
 

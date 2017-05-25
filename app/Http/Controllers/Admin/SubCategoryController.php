@@ -14,7 +14,7 @@ class SubCategoryController extends BaseController
     protected $list_data = [['field' => 'id', 'type' => 'number', 'label' => 'ID'],
         ['field' => 'title', 'type' => 'text', 'label' => 'Title'],
         ['field' => 'category_name', 'type' => 'text', 'label' => 'Category'],
-        ['field' => 'image', 'type' => 'image', 'label' => 'Logo'],
+        ['field' => 'image', 'type' => 'image', 'label' => 'Image'],
         ['field' => 'active', 'type' => 'checkbox', 'label' => 'Active']];
     protected $create = true;
     protected $edit = true;
@@ -40,7 +40,7 @@ class SubCategoryController extends BaseController
         $categories = Category::select('id', 'title')->get()->pluck('title', 'id');
         $form_data = collect([['field' => 'id', 'type' => 'number', 'label' => 'ID', 'required' => false],
             ['field' => 'title', 'type' => 'text', 'label' => 'Title', 'required' => true],
-            ['field' => 'image', 'type' => 'image', 'label' => 'Logo', 'required' => false],
+            ['field' => 'image', 'type' => 'image', 'label' => 'Image', 'required' => false],
             ['field' => 'category_id', 'type' => 'select', 'label' => 'Category', 'option' => $categories],
             ['field' => 'content', 'type' => 'wysiwyg', 'label' => 'Content', 'required' => true],
             ['field' => 'active', 'type' => 'checkbox', 'label' => 'Active', 'required' => true]]);

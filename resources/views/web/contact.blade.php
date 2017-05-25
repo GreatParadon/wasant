@@ -15,7 +15,7 @@
             padding-left: 100px;
         }
 
-        .contact .col-md-6{
+        .contact .col-md-6 {
             margin-bottom: 50px;
         }
 
@@ -31,7 +31,7 @@
             margin-bottom: 20px;
         }
 
-        .contact-wasant-logo img{
+        .contact-wasant-logo img {
             width: 50%;
 
         }
@@ -93,7 +93,7 @@
     <script type="application/javascript">
         $("#submit_button").click(function () {
             $.ajax({
-                url: '{{ url('store') }}',
+                url: '{{ url('contactstore') }}',
                 type: 'POST',
                 data: {
                     name: $("#name").val(),
