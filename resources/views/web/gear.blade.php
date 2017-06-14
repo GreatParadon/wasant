@@ -21,7 +21,7 @@
             max-width: 100%;
         }
 
-        .item img {
+        .gear img {
             width: 100%;
             margin-bottom: 30px;
             cursor: pointer;
@@ -51,7 +51,7 @@
 
     <div class="row gear">
         @forelse($gears as $image)
-            <div class="col-md-3 item">
+            <div class="col-md-3 item gear">
                 <img src="{{ asset('content/gear').'/'.$image->image }}" data-toggle="modal"
                      data-target="#image{{$image->id}}" height="200" class="fit-image">
                 <div class="modal fade" id="image{{$image->id}}" tabindex="-1" role="dialog"

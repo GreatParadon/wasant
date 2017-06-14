@@ -27,7 +27,6 @@ class PromotionController extends BaseController
         $form_data = collect([['field' => 'id', 'type' => 'number', 'label' => 'ID', 'required' => false],
             ['field' => 'title', 'type' => 'text', 'label' => 'Title', 'required' => true],
             ['field' => 'image', 'type' => 'image', 'label' => 'Promotion Image (1165 x 380)', 'required' => false],
-            ['field' => 'content', 'type' => 'wysiwyg', 'label' => 'Content', 'required' => false],
             ['field' => 'active', 'type' => 'checkbox', 'label' => 'Active', 'required' => false]]);
 
         return $form_data;

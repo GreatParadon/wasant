@@ -101,9 +101,9 @@
     <div class="row content">
         <div class="col-md-12">
             @if($info)
-                <img src="{{ asset('content/info/'.$info->image) }}">
+                <img src="{{ asset('content/info/'.$info->image) }}" width="1165" height="380" class="fit-image">
             @else
-                <img src="{{ asset('resources/index/history.png') }}">
+                <img src="{{ asset('resources/index/history.png') }}" width="1165" height="380" class="fit-image">
             @endif
             <div class="history">
 

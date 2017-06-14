@@ -83,9 +83,9 @@
                 Contact Us
             </h3>
             <hr align="left" width="80%">
-            <a href="https://www.facebook.com/Wasant-Studio-517995318300074/?fref=ts"><img src="{{ asset('resources/footer').'/facebook.png' }}"> wasant studio</a>
+            <a href="https://www.facebook.com/Wasant-Studio-517995318300074/?fref=ts"><img src="{{ asset('resources/footer').'/fb_logo.png' }}" width="49" height="49"> wasant studio</a>
             <a href="#"><img src="{{ asset('resources/footer').'/email.png' }}"> wasantstudio@hotmail.com</a>
-            <a href="tel:+6628788988"><img src="{{ asset('resources/footer').'/call.png' }}"> @wasantstudio</a>
+            <a href="tel:+6628788988"><img src="{{ asset('resources/footer').'/line_logo.png' }}" width="49" height="49"> @wasantstudio</a>
         </div>
     </div>
 </footer>

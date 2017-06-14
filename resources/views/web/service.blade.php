@@ -16,7 +16,7 @@
             margin-bottom: 30px;
         }
 
-        .item img {
+        .subcategory img {
             width: 100%;
             margin-bottom: 30px;
             cursor: pointer;
@@ -47,7 +47,7 @@
             <div class="row">
                 @if(isset($r->service_image))
                     @foreach($r->service_image as $image)
-                        <div class="col-md-3 item">
+                        <div class="col-md-3 item subcategory">
                             <img src="{{ asset('content/subcategory').'/'.$image->image }}" data-toggle="modal"
                                  data-target="#image{{$image->id}}" height="200" class="fit-image">
                             <div class="modal fade" id="image{{$image->id}}" tabindex="-1" role="dialog"

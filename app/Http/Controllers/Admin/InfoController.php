@@ -20,8 +20,11 @@ class InfoController extends BaseController
     protected function formData()
     {
         $form_data = collect([['field' => 'id', 'type' => 'number', 'label' => 'ID', 'required' => false],
-            ['field' => 'image', 'type' => 'image', 'label' => 'Info Image (1165 x 380)', 'required' => false],
-            ['field' => 'title', 'type' => 'text', 'label' => 'Title', 'required' => false]]);
+            ['field' => 'slogan1', 'type' => 'text', 'label' => 'Slogan1', 'required' => false],
+            ['field' => 'slogan2', 'type' => 'text', 'label' => 'Slogan2', 'required' => false],
+            ['field' => 'title', 'type' => 'text', 'label' => 'Title', 'required' => false],
+            ['field' => 'image', 'type' => 'image', 'label' => 'Info Image (1165 x 380)', 'required' => false]
+        ]);
 
         return $form_data;
     }
